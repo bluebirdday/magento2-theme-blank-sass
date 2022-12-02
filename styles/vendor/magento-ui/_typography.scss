@@ -605,3 +605,28 @@
     @include lib-typography-code();
     @include lib-typography-blockquote();
 }
+
+//
+//  Function for font clamping
+//  https://css-tricks.com/linearly-scale-font-size-with-css-clamp-based-on-the-viewport/
+//  simple usage example: font-size: lib-font-clamp($p__font-size, $p__font-size-desktop);
+//  ---------------------------------------------
+
+@function stripUnit($value) {
+    @return $value / ($value * 0 + 1);
+}
+
+@function lib-font-clamp(
+    $minFontSizeRem,
+    $maxFontSizeRem,
+    $minScreenWidthPx: stripUnit($screen__m),
+    $maxScreenWidthPx: stripUnit($screen__xxl),
+    $pixelsPerRem: 10 //now 62.5% of browser font-size (16 / 100 * 62.5
+) {
+    $minWidth: $minScreenWidthPx / $pixelsPerRem;
+    $maxWidth: $maxScreenWidthPx / $pixelsPerRem;
+    $slope: (stripUnit($maxFontSizeRem) - stripUnit($minFontSizeRem)) / ($maxWidth - $minWidth);
+    $yAxisIntersection: -$minWidth * $slope + $minFontSizeRem;
+    @return clamp(#{$minFontSizeRem}, calc(#{$yAxisIntersection} + #{$slope * 100}vw), #{$maxFontSizeRem});
+}
+
