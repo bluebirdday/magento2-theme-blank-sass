@@ -9,7 +9,7 @@ This repo contains bug fixes for the SnowdogApps/magento2-theme-blank-sass theme
 SASS based version of Magento 2 Blank theme, which aims to be as close to the core code as possible.
 
 ## Installation
-1. Add this to your project dependecies list `composer require snowdog/theme-blank-sass`
+1. Add this to your project dependecies list `composer require bluebirdday/theme-blank-sass`
 2. Set you application to `developer` mode
 3. Run `bin/magento setup:upgrade` to register theme
 4. Compile SASS files using [Frontools](https://github.com/SnowdogApps/magento2-frontools) or tools of choice
