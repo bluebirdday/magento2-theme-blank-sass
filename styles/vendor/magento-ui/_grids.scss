@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 //
 //  Grid mixins
 //  _____________________________________________
@@ -205,7 +207,7 @@ $grid-width    : ($column-width * $total-columns) + ($gutter-width * ($total-col
     $span,
     $total-columns: $total-columns
 ) {
-    $calc-column-width: 100% * (((($gutter-width+$column-width) * $span)-$gutter-width) / $grid-width);
+    $calc-column-width: 100% * math.div($gutter-width + $column-width * $span - $gutter-width, $grid-width);
 
     @include lib-css(width, $calc-column-width);
 }
