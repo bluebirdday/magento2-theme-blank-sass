@@ -615,7 +615,7 @@
 //  ---------------------------------------------
 
 @function stripUnit($value) {
-    @return $value / ($value * 0 + 1);
+    @return math.div($value, $value * 0 + 1);
 }
 
 @function lib-font-clamp(
@@ -625,9 +625,9 @@
     $maxScreenWidthPx: stripUnit($screen__xxl),
     $pixelsPerRem: 10 //now 62.5% of browser font-size (16 / 100 * 62.5
 ) {
-    $minWidth: $minScreenWidthPx / $pixelsPerRem;
-    $maxWidth: $maxScreenWidthPx / $pixelsPerRem;
-    $slope: (stripUnit($maxFontSizeRem) - stripUnit($minFontSizeRem)) / ($maxWidth - $minWidth);
+    $minWidth: math.div($minScreenWidthPx, $pixelsPerRem);
+    $maxWidth: math.div($maxScreenWidthPx, $pixelsPerRem);
+    $slope: math.div(stripUnit($maxFontSizeRem) - stripUnit($minFontSizeRem), $maxWidth - $minWidth);
     $yAxisIntersection: -$minWidth * $slope + $minFontSizeRem;
     @return clamp(#{$minFontSizeRem}, calc(#{$yAxisIntersection} + #{$slope * 100}vw), #{$maxFontSizeRem});
 }
