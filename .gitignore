@@ -3,3 +3,6 @@ node_modules
 
 # Styles compilation output
 /.test/styles
+
+# IDEA
+.idea

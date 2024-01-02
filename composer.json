@@ -1,6 +1,6 @@
 {
-    "name": "snowdog/theme-blank-sass",
-    "description": "SASS based version of Magento 2 Blank theme",
+    "name": "bluebirdday/theme-blank-sass",
+    "description": "Fork of Snowdog's SASS based version of Magento 2 Blank theme",
     "license": "MIT",
     "type": "magento2-theme",
     "autoload": {
